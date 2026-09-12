@@ -1,0 +1,10 @@
+/dev/block/dm-0 /system_root erofs ro 0 0
+/dev/block/dm-1 /system_ext erofs ro 0 0
+/dev/block/dm-2 /vendor erofs ro 0 0
+/dev/block/dm-3 /product erofs ro 0 0
+/dev/block/dm-5 /vendor_dlkm erofs ro 0 0
+ /external_sd auto rw 0 0
+/dev/block/mmcblk0p70 /tranfs ext4 rw 0 0
+ /usbotg auto rw 0 0
+/dev/block/mmcblk0p51 /metadata f2fs rw 0 0
+/dev/block/dm-8 /data f2fs rw 0 0
