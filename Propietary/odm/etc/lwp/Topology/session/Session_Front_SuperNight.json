@@ -1,0 +1,35 @@
+{
+    "DataLicense": "Transsion",
+    "DataCopyright": "2023-03-14",
+    "session": {
+        "name": "Session_Front_SuperNight",
+        "usecase": {
+            "facing": "front",
+            "stream_list": [
+                {
+                    "dir": "output",
+                    "max_width": 1440,
+                    "max_height": 1080,
+                    "formats": [ "NV12" ]
+                },
+                {
+                    "dir": "output",
+                    "max_width": 3264,
+                    "max_height": 2448,
+                    "formats": [ "JPEG" ]
+                },
+                {
+                    "dir": "output",
+                    "max_width": 320,
+                    "max_height": 240,
+                    "formats": [ "NV12"]
+                }
+            ]
+        },
+        "pipeline": [
+            "Pipeline_SuperNight_Capture",
+            "Pipeline_SuperNight_Preview",
+            "Pipeline_Async"
+        ]
+    }
+}

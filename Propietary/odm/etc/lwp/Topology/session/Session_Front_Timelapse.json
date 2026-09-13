@@ -1,0 +1,36 @@
+{
+    "DataLicense": "Transsion",
+    "DataCopyright": "2023-02-14",
+    "session": {
+        "name": "Session_Front_Timelapse",
+        "usecase": {
+            "facing": "front",
+            "stream_list": [
+                {
+                    "dir": "output",
+                    "max_width": 1920,
+                    "max_height": 1080,
+                    "formats": [ "NV12" ]
+                },
+                {
+                    "dir": "output",
+                    "max_width": 1920,
+                    "max_height": 1080,
+                    "formats": [ "NV12_VIDEO" ]
+                },
+                {
+                    "dir": "output",
+                    "max_width": 1920,
+                    "max_height": 1080,
+                    "formats": [ "JPEG" ]
+                }
+            ]
+        },
+        "pipeline": [
+            "Pipeline_Timelapse_Preview",
+            "Pipeline_Timelapse_Video",
+            "Pipeline_Async",
+            "Pipeline_Video_Capture"
+        ]
+    }
+}

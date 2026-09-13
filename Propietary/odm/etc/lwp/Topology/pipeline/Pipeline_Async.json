@@ -1,0 +1,106 @@
+{
+	"DataLicense": "LicenseRef-Unisoc-General-1.0",
+	"DataCopyright": "2022 Unisoc (Shanghai) Technologies Co., Ltd.",
+    "name": "Pipeline_Async",
+    "stream": "async_stream",
+    "nodes": [
+        {
+            "type": "DummyNode",
+            "vendor": "SPRD",
+            "id": "SourceNode0"
+        },
+        {
+            "type": "DummyNode",
+            "vendor": "SPRD",
+            "id": "SourceNode1"
+        },
+        {
+            "type": "DummyNode",
+            "vendor": "SPRD",
+            "id": "SourceNode2"
+        },
+        {
+            "type": "DummyNode",
+            "vendor": "SPRD",
+            "id": "SourceNode3"
+        },
+        {
+            "type": "FaceDetectSDKNode",
+            "vendor": "SPRD",
+            "id": "async_FaceDetect"
+        },
+        {
+            "type": "SceneDetectNode",
+            "vendor": "SPRD",
+            "id": "async_SceneDetect"
+        },
+        {
+            "type": "TranAlgoPluginNode",
+            "vendor": "TRAN",
+            "id": "pre_async_TranAlgoPlugin"
+        }
+    ],
+    "rootNodes": ["SourceNode0","SourceNode1","SourceNode2","SourceNode3"],
+    "linkages": [
+        {
+            "from": {
+                "name": "SourceNode0",
+                "port": "result_out"
+            },
+            "to": {
+                "name": "async_FaceDetect",
+                "port": "in0"
+            }
+        },
+        {
+            "from": {
+                "name": "SourceNode1",
+                "port": "result_out"
+            },
+            "to": {
+                "name": "async_FaceDetect",
+                "port": "in0"
+            }
+        },
+        {
+            "from": {
+                "name": "SourceNode2",
+                "port": "result_out"
+            },
+            "to": {
+                "name": "async_FaceDetect",
+                "port": "in0"
+            }
+        },
+        {
+            "from": {
+                "name": "SourceNode3",
+                "port": "result_out"
+            },
+            "to": {
+                "name": "async_FaceDetect",
+                "port": "in0"
+            }
+        },
+        {
+            "from": {
+                "name": "async_FaceDetect",
+                "port": "out0"
+            },
+            "to": {
+                "name": "pre_async_TranAlgoPlugin",
+                "port": "pre_async_in"
+            }
+        },
+        {
+            "from": {
+                "name": "pre_async_TranAlgoPlugin",
+                "port": "pre_async_out"
+            },
+            "to": {
+                "name": "async_SceneDetect",
+                "port": "in0"
+            }
+        }
+    ]
+}

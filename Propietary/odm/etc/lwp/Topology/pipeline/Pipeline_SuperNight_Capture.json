@@ -1,0 +1,156 @@
+{
+    "DataLicense": "Transsion",
+    "DataCopyright": "2023-03-14",
+    "name": "Pipeline_SuperNight_Capture",
+    "stream": "capture_stream",
+    "nodes": [
+        {
+            "type": "DummyNode",
+            "vendor": "SPRD",
+            "id": "SourceNode0"
+        },
+        {
+            "type": "DummyNode",
+            "vendor": "SPRD",
+            "id": "SourceNode1"
+        },
+        {
+            "type": "DummyNode",
+            "vendor": "SPRD",
+            "id": "SinkNode"
+        },
+        {
+            "type": "MultiFrameRouterNode",
+            "vendor": "SPRD",
+            "id": "cap_MF_router"
+        },
+        {
+            "type": "MFNRNode",
+            "vendor": "SPRD",
+            "id": "cap_MFNR"
+        },
+        {
+            "type": "YNRCNRNode",
+            "vendor": "SPRD",
+            "id": "cap_YNRCNR"
+        },
+        {
+            "type": "TranAlgoPluginNode",
+            "vendor": "TRAN",
+            "id": "cap_TranAlgoPlugin"
+        },
+        {
+            "type": "TranAlgoPluginNode",
+            "vendor": "TRAN",
+            "id": "cap_mf_TranAlgoPlugin"
+        },
+        {
+            "type": "JpegNode",
+            "vendor": "SPRD",
+            "id": "cap_Jpeg"
+        }
+    ],
+    "rootNodes": ["SourceNode0","SourceNode1"],
+    "linkages": [
+        {
+            "from": {
+                "name": "SourceNode0",
+                "port": "result_out"
+            },
+            "to": {
+                "name": "cap_MF_router",
+                "port": "cin0"
+            }
+        },
+        {
+            "from": {
+                "name": "SourceNode1",
+                "port": "result_out"
+            },
+            "to": {
+                "name": "cap_MF_router",
+                "port": "cin0"
+            }
+        },
+        {
+            "from": {
+                "name": "cap_MF_router",
+                "port": "tranMultiFrame"
+            },
+            "to": {
+                "name": "cap_mf_TranAlgoPlugin",
+                "port": "multi_cap_in"
+            }
+        },
+        {
+            "from": {
+                "name": "cap_mf_TranAlgoPlugin",
+                "port": "multi_cap_out"
+            },
+            "to": {
+                "name": "cap_YNRCNR",
+                "port": "in0"
+            }
+        },
+        {
+            "from": {
+                "name": "cap_MF_router",
+                "port": "single"
+            },
+            "to": {
+                "name": "cap_YNRCNR",
+                "port": "in0"
+            }
+        },
+        {
+            "from": {
+                "name": "cap_MF_router",
+                "port": "mfnr"
+            },
+            "to": {
+                "name": "cap_MFNR",
+                "port": "in0"
+            }
+        },
+        {
+            "from": {
+                "name": "cap_MFNR",
+                "port": "out0"
+            },
+            "to": {
+                "name": "cap_YNRCNR",
+                "port": "in0"
+            }
+        },
+        {
+            "from": {
+                "name": "cap_YNRCNR",
+                "port": "out0"
+            },
+            "to": {
+                "name": "cap_TranAlgoPlugin",
+                "port": "cap_in"
+            }
+        },
+        {
+            "from": {
+                "name": "cap_TranAlgoPlugin",
+                "port": "cap_out"
+            },
+            "to": {
+                "name": "cap_Jpeg",
+                "port": "in0"
+            }
+        },
+        {
+            "from": {
+                "name": "cap_Jpeg",
+                "port": "out0"
+            },
+            "to": {
+                "name": "SinkNode",
+                "port": "in0"
+            }
+        }
+    ]
+}

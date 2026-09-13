@@ -1,0 +1,61 @@
+{
+    "DataLicense": "Transsion",
+    "DataCopyright": "2023-03-14",
+    "name": "Pipeline_SuperNight_Preview",
+    "stream": "preview_stream",
+    "nodes": [
+        {
+            "type": "DummyNode",
+            "vendor": "SPRD",
+            "id": "SourceNode0"
+        },
+        {
+            "type": "DummyNode",
+            "vendor": "SPRD",
+            "id": "SourceNode1"
+        },
+        {
+            "type": "DummyNode",
+            "vendor": "SPRD",
+            "id": "SinkNode"
+        },
+        {
+            "type": "TranAlgoPluginNode",
+            "vendor": "TRAN",
+            "id": "prev_TranAlgoPlugin"
+        }
+    ],
+    "rootNodes": ["SourceNode0","SourceNode1"],
+    "linkages": [
+        {
+            "from": {
+                "name": "SourceNode0",
+                "port": "result_out"
+            },
+            "to": {
+                "name": "prev_TranAlgoPlugin",
+                "port": "pre_in"
+            }
+        },
+        {
+            "from": {
+                "name": "SourceNode1",
+                "port": "result_out"
+            },
+            "to": {
+                "name": "prev_TranAlgoPlugin",
+                "port": "pre_in"
+            }
+        },
+        {
+            "from": {
+                "name": "prev_TranAlgoPlugin",
+                "port": "pre_out"
+            },
+            "to": {
+                "name": "SinkNode",
+                "port": "in0"
+            }
+        }
+    ]
+}
