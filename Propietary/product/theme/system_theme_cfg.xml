@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<Document>
+<theme-info>
+    <id>-99</id>
+    <name>Simple Geometry</name>
+    <filename>Xtheme.apk</filename>
+    <filepath>product/theme/Xtheme/Xtheme.apk</filepath>
+</theme-info>
+<theme-info>
+    <id>-2</id>
+    <name>Colorful Crystals</name>
+    <filename>Xtheme_color.apk</filename>
+    <filepath>product/theme/Xtheme_color/Xtheme_color.apk</filepath>
+</theme-info>
+</Document>
